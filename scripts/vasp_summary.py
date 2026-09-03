@@ -11,6 +11,20 @@ import sys
 from ase.io import read
 
 
+def check_convergence(filename):
+    """Check whether VASP reports electronic/ionic convergence."""
+
+    with open(filename, "r", errors="ignore") as file:
+        content = file.read()
+
+    convergence_messages = [
+        "reached required accuracy",
+        "aborting loop because EDIFF is reached"
+    ]
+
+    return any(message in content for message in convergence_messages)
+
+
 def main():
     """Read a VASP OUTCAR file and print a calculation summary."""
 
@@ -27,12 +41,15 @@ def main():
         formula = atoms.get_chemical_formula()
         natoms = len(atoms)
 
+        converged = check_convergence(filename)
+
         print("\nVASP Calculation Summary")
         print("------------------------")
         print(f"File:         {filename}")
         print(f"Formula:      {formula}")
         print(f"Atoms:        {natoms}")
         print(f"Final energy: {energy:.6f} eV")
+        print(f"Converged:    {'Yes' if converged else 'No'}")
 
     except FileNotFoundError:
         print(f"Error: File '{filename}' was not found.")
