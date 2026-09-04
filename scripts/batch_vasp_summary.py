@@ -1,7 +1,7 @@
 """
 batch_vasp_summary.py
 
-Scan subdirectories for VASP OUTCAR files and print
+This will scan subdirectories for VASP OUTCAR files (OER intermediates) and print
 a compact summary table using ASE.
 
 Author: Radha Somaiya
