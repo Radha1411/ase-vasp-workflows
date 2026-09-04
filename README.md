@@ -2,7 +2,7 @@
 
 Lightweight Python and Atomic Simulation Environment (ASE) workflows for VASP and Quantum ESPRESSO calculation analysis and post-processing.
 
-The repository contains small command-line utilities developed for common tasks in computational materials and catalysis workflows, including calculation summaries, convergence checks, batch analysis, structure conversion, and magnetic-moment extraction.
+The repository contains lightweight command-line utilities for common computational materials and catalysis workflows, including VASP calculation summaries, convergence checks, batch analysis, structure conversion, magnetic-moment extraction, and VTST NEB post-processing and visualization.
 
 ## Features
 
@@ -27,7 +27,7 @@ ase-vasp-workflows/
 │   ├── vasp_summary.py
 │   ├── batch_vasp_summary.py
 │   ├── convert_structure.py
-│   └── magnetic_summary.py
+│   ├── magnetic_summary.py
 │   └── neb_summary.py
 ├── .gitignore
 ├── LICENSE
@@ -39,17 +39,12 @@ ase-vasp-workflows/
 
 - Python 3
 - Atomic Simulation Environment (ASE)
+- Matplotlib
 
 Install the required Python package with:
 
 ```bash
 pip install -r requirements.txt
-```
-
-or install ASE directly:
-
-```bash
-pip install ase
 ```
 
 ## Usage
